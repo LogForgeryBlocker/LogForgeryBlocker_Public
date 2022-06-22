@@ -1,0 +1,107 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table User {
+  id String [pk]
+  createdAt DateTime [default: `now()`, not null]
+  username String [not null]
+  password String [not null]
+  organization Organization
+  organizationId String
+  roles OrganizationRole[] [not null]
+}
+
+Table Agent {
+  id String [pk]
+  createdAt DateTime [default: `now()`, not null]
+  name String [not null]
+  active Boolean [not null]
+  organization Organization [not null]
+  organizationId String [not null]
+  logs Log [not null]
+  config AgentConfig
+}
+
+Table AgentConfig {
+  id String [pk]
+  maxRecordCount Int [not null]
+  snapshotInterval Int [not null]
+  agent Agent [not null]
+  agentId String [unique, not null]
+}
+
+Table AgentLogDeadline {
+  id String [pk]
+  agentId String [unique, not null]
+  deadline DateTime [not null]
+}
+
+Table Organization {
+  id String [pk]
+  createdAt DateTime [default: `now()`, not null]
+  name String [not null]
+  logs Log [not null]
+  users User [not null]
+  agents Agent [not null]
+}
+
+Table Log {
+  id String [pk]
+  createdAt DateTime [default: `now()`, not null]
+  name String [not null]
+  records Int [not null]
+  snapshots Snapshot [not null]
+  organization Organization [not null]
+  organizationId String [not null]
+  agent Agent [not null]
+  agentId String [not null]
+  logVerification LogVerification [not null]
+}
+
+Table Snapshot {
+  id String [pk]
+  createdAt DateTime [default: `now()`, not null]
+  firstLine Int [not null]
+  lastLine Int [not null]
+  fingerprint String [not null]
+  log Log [not null]
+  logId String [not null]
+  transaction BlockchainTx
+}
+
+Table BlockchainTx {
+  id String [pk]
+  snapshotId String [unique, not null]
+  snapshot Snapshot [not null]
+  txHash String [not null]
+}
+
+Table LogVerification {
+  id String [pk]
+  createdAt DateTime [default: `now()`, not null]
+  log Log [not null]
+  logId String [not null]
+  isCorrect Boolean [not null]
+}
+
+Enum OrganizationRole {
+  USER
+  ADMIN
+}
+
+Ref: User.organizationId > Organization.id
+
+Ref: Agent.organizationId > Organization.id
+
+Ref: AgentConfig.agentId - Agent.id
+
+Ref: Log.organizationId > Organization.id
+
+Ref: Log.agentId > Agent.id
+
+Ref: Snapshot.logId > Log.id
+
+Ref: BlockchainTx.snapshotId - Snapshot.id
+
+Ref: LogVerification.logId > Log.id

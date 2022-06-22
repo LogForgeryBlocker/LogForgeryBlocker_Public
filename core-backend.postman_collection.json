@@ -1,0 +1,573 @@
+{
+	"info": {
+		"_postman_id": "2a75d511-a27e-4dab-b024-c37a34fa9a9d",
+		"name": "core-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "log",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/log",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"log"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/log/a7dc42df-5b93-4aaf-bc50-3ad16b4504b0",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"log",
+								"a7dc42df-5b93-4aaf-bc50-3ad16b4504b0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiQUdFTlRfVE9LRU4iLCJhZ2VudElkIjoiZmQ5NTRjODUtNDFjOC00YzYxLTk2NjctMWY2MGU0NGZlYWU1IiwibmFtZSI6InRlc3QiLCJvcmdhbml6YXRpb25JZCI6IjEyZmQ2YmE4LTE2NzQtNDdmNi04YTQwLTQ0MmNiYWYzOTkxYyIsImlhdCI6MTY1MTc1MTA2M30.XqWVVBdH1nVqzFOmHdKL17UeO8NcLqFOngNb2AgGCkA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test0\"\n}"
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/log",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"log"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllForAgent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiQUdFTlRfVE9LRU4iLCJhZ2VudElkIjoiYTE4Zjc0NWUtNjMwZS00ZGMwLTg5NTUtZTI5NWI3YTMzZmIxIiwibmFtZSI6ImFnZW50XzEiLCJvcmdhbml6YXRpb25JZCI6Ijc2MDA5NDUzLWE0ZGQtNDhhZC05Zjk0LTc5MmJjM2RhMTNmYiIsImlhdCI6MTY0NzUzNTMyOH0.NqDlWDeQF76Ye5ArPv_TA1-R9nw9xmU8PdnJOlvqyxU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/log/for_agent/",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"log",
+								"for_agent",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "snapshot",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/snapshot/cd480494-f86d-4600-9649-2214e45bb5c9",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"snapshot",
+								"cd480494-f86d-4600-9649-2214e45bb5c9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllForLog",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/snapshot/for_log/b1cedc0a-a55e-49ad-b573-b2bc313d96cc",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"snapshot",
+								"for_log",
+								"b1cedc0a-a55e-49ad-b573-b2bc313d96cc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiQUdFTlRfVE9LRU4iLCJhZ2VudElkIjoiZmQ5NTRjODUtNDFjOC00YzYxLTk2NjctMWY2MGU0NGZlYWU1IiwibmFtZSI6InRlc3QiLCJvcmdhbml6YXRpb25JZCI6IjEyZmQ2YmE4LTE2NzQtNDdmNi04YTQwLTQ0MmNiYWYzOTkxYyIsImlhdCI6MTY1MTc1MTA2M30.XqWVVBdH1nVqzFOmHdKL17UeO8NcLqFOngNb2AgGCkA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstLine\": 0,\n    \"lastLine\": 50,\n    \"logId\": \"de5f126c-c331-4f31-bd1a-5bd2d1552657\",\n    \"fingerprint\": \"8b7a61e3f4bb8860ac05cca20c460d72d75c19b648a77a9d0dc6a70edc324ee7\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/snapshot",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"snapshot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agentGetAllForLog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiQUdFTlRfVE9LRU4iLCJhZ2VudElkIjoiYWZkZDEzNzUtMjNiMS00MjE3LTllZjgtZWIyZTNiOWU4MzZiIiwibmFtZSI6ImFnZW50XzQiLCJvcmdhbml6YXRpb25JZCI6IjZmM2Q0MTAxLWIwOWMtNDk4OS1iM2ViLTg0NDNhYWU2OWFkMCIsImlhdCI6MTY1MTc1NDY5NX0.E5kjgFQqx7D3MbAz3dSCxf-mLLworPpBPXal1FjmfjI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/snapshot/agent_for_log/1a8756e4-7826-4046-846d-bf7d461137be",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"snapshot",
+								"agent_for_log",
+								"1a8756e4-7826-4046-846d-bf7d461137be"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "organization",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/organization",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"organization"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"8Bisons\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/organization",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"organization"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"prezentacja\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/auth/login",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"prezentacja\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/auth/register",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "agent",
+			"item": [
+				{
+					"name": "config",
+					"item": [
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"maxRecordCount\": 400\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_BASE_URL}}/agent/config/af4227d1-043f-44bc-95d7-21296d0cc261",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"agent",
+										"config",
+										"af4227d1-043f-44bc-95d7-21296d0cc261"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiQUdFTlRfVE9LRU4iLCJhZ2VudElkIjoiYTE4Zjc0NWUtNjMwZS00ZGMwLTg5NTUtZTI5NWI3YTMzZmIxIiwibmFtZSI6ImFnZW50XzEiLCJvcmdhbml6YXRpb25JZCI6Ijc2MDA5NDUzLWE0ZGQtNDhhZC05Zjk0LTc5MmJjM2RhMTNmYiIsImlhdCI6MTY0NzUzNTMyOH0.NqDlWDeQF76Ye5ArPv_TA1-R9nw9xmU8PdnJOlvqyxU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_BASE_URL}}/agent/config",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"agent",
+										"config"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/agent/",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"agent",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/agent/a18f745e-630e-4dc0-8955-e295b7a33fb1",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"agent",
+								"a18f745e-630e-4dc0-8955-e295b7a33fb1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"agent_1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/agent/",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"agent",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/agent/{{ id }}",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"agent",
+								"{{ id }}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getToken",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/agent/getToken/a18f745e-630e-4dc0-8955-e295b7a33fb1",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"agent",
+								"getToken",
+								"a18f745e-630e-4dc0-8955-e295b7a33fb1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tests",
+			"item": [
+				{
+					"name": "Blockchain test",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/blockchain",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"blockchain"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiVVNFUl9UT0tFTiIsInVzZXJJZCI6IjIzMzBjYTE3LTNmYzYtNGI5Yy05MzhiLWZhNGI4M2E4ODViMyIsInVzZXJuYW1lIjoicHJlemVudGFjamEiLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iXSwib3JnYW5pemF0aW9uSWQiOiJjZTlmYmRiZi0zMDQ2LTRlYzMtYTZhMi04Y2VjNzBhYTEzN2EiLCJpYXQiOjE2NTExNzc1NTAsImV4cCI6MTY1MTIyMDc1MH0.xEMDPcVJ_qIO_ceXkiAfKl6KAqvBgZT__GHwUYyLveY",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.add({key: 'Content-Type', value: 'application/json' });"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

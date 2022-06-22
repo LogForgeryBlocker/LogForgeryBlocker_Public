@@ -1,0 +1,115 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator dbml {
+  provider = "npx prisma-dbml-generator"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  username String
+  password String
+  organization Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?
+  roles OrganizationRole[]
+}
+
+model Agent {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  name String
+  active Boolean
+  organization Organization @relation(fields: [organizationId], references: [id])
+  organizationId String
+  logs Log[]
+  config AgentConfig?
+}
+
+model AgentConfig {
+  id String @id @default(uuid())
+
+  maxRecordCount Int
+  snapshotInterval Int
+  agent Agent @relation(fields: [agentId], references: [id])
+  agentId String
+}
+
+model AgentLogDeadline {
+  id String @id @default(uuid())
+  agentId String @unique
+
+  deadline DateTime
+}
+
+model Organization {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  name String
+  logs Log[]
+  users User[]
+  agents Agent[]
+}
+
+model Log {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  name String
+  records Int
+  snapshots Snapshot[]
+  organization Organization @relation(fields: [organizationId], references: [id])
+  organizationId String
+  agent Agent @relation(fields: [agentId], references: [id])
+  agentId String
+
+  logVerification LogVerification[]
+}
+
+model Snapshot {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  firstLine Int
+  lastLine Int
+  fingerprint String
+  log Log @relation(fields: [logId], references: [id])
+  logId String
+
+  transaction BlockchainTx?
+}
+
+model BlockchainTx {
+  id String @id @default(uuid())
+  
+  snapshotId String
+  snapshot Snapshot @relation(fields: [snapshotId], references: [id])
+
+  txHash String
+}
+
+model LogVerification {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  log Log @relation(fields: [logId], references: [id])
+  logId String
+  isCorrect Boolean
+}
+
+enum OrganizationRole {
+  USER
+  ADMIN
+}

@@ -1,0 +1,50 @@
+version: '3.9'
+services:
+  backend:
+    container_name: backend
+    image: backend
+    build: .
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    networks:
+      - lfb-network
+    environment:
+      - EXTERNAL_PORT=3000
+    depends_on:
+      - db
+      - events
+  db:
+    container_name: db
+    image: 'postgres:12'
+    ports:
+      - '5432:5432'
+    networks:
+      - lfb-network
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=lfb-database
+    volumes:
+      - pgdata1:/var/lib/postgresql/data
+  events:
+    container_name: events
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    networks:
+      - lfb-network
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - events:/data
+
+volumes:
+  pgdata1: {}
+  events:
+    driver: local
+
+networks:
+  lfb-network:
+    driver: bridge
